@@ -2,19 +2,32 @@ import axios from "axios";
 import React from "react";
 import { useState, useEffect } from "react";
 
-import { Container, Button, Card, CardContent, Image } from "semantic-ui-react";
+import { Container, Button, Card, Image, Loader,Item } from "semantic-ui-react";
 
-export default function Item() {
+export default function Product() {
   const [item, setitem] = useState([]);
+  const [loading, setLoading] = useState(true)
   const fetcher = async () => {
     const { data } = await axios(`https://fakestoreapi.com/products`);
     setitem(data);
     console.log(data);
   };
-
-  useEffect(() => {
-    fetcher();
+  useEffect(() => { 
+    setTimeout(() => {
+      fetcher();
+      setLoading(false)
+    }, 3000);
+      
+          
   }, []);
+
+  if(loading){
+    return (            
+         <Loader active  verticalAlign='middle'/>                 
+    )
+  }
+
+
 
 
   return (

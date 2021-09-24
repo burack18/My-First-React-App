@@ -1,12 +1,12 @@
 import React from 'react'
-import Item from './Components/Item'
 import LayOut from './Components/LayOut'
+import Product from './Components/Product'
 
 export default function App() {
     return (
         <div>
             <LayOut/>
-            <Item/>
+            <Product/>
         </div>
     )
 }
